@@ -125,6 +125,7 @@ async function render(_opts = {}) {
       await page.setContent(opts.html, opts.goto);
     } else {
       logger.info(`Goto url ${opts.url} ..`);
+      await page.setExtraHTTPHeaders({'X-Forwarded-Proto': 'https'})
       await page.goto(opts.url, opts.goto);
     }
 
